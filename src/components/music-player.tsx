@@ -3,23 +3,27 @@
 import { useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { Music, Play, Pause, Forward, Rewind } from 'lucide-react';
+import { Music, Play, Pause, Forward, Rewind, Link as LinkIcon } from 'lucide-react';
+import Link from "next/link";
 
 const songs = [
   {
     title: "Canción para Gregoria Apaza 1",
     description: "Un homenaje desde el corazón.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/9a1.mp3"
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/9a1.mp3",
+    link: "https://soundcloud.com/gregoria-apaza-cpmga/9a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   },
   {
     title: "Canción para Gregoria Apaza 2",
     description: "Melodías de cambio y esperanza.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/12a1.mp3"
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/12a1.mp3",
+    link: "https://soundcloud.com/gregoria-apaza-cpmga/12a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   },
   {
     title: "Canción para Gregoria Apaza 3",
     description: "El sonido de la resiliencia.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/14a1.mp3"
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/14a1.mp3",
+    link: "https://soundcloud.com/gregoria-apaza-cpmga/14a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   }
 ];
 
@@ -79,6 +83,12 @@ export function MusicPlayer() {
             <Button variant="ghost" size="icon" onClick={playNextSong} aria-label="Siguiente canción">
                 <Forward className="h-6 w-6 text-primary" />
             </Button>
+        </div>
+        <div className="mt-4 text-center">
+            <Link href={songs[currentSongIndex].link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-flex items-center gap-1.5">
+                <LinkIcon className="w-4 h-4"/>
+                Escuchar en SoundCloud
+            </Link>
         </div>
         <audio 
             ref={audioRef} 
