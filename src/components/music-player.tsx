@@ -35,25 +35,27 @@ export function MusicPlayer() {
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
-      audioElement.src = songs[currentSongIndex].audioSrc;
       if (isPlaying) {
         audioElement.play().catch(e => console.error("Error al reproducir audio:", e));
       } else {
         audioElement.pause();
       }
     }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+        audioElement.src = songs[currentSongIndex].audioSrc;
+        if (isPlaying) {
+            audioElement.play().catch(e => console.error("Error al reproducir audio:", e));
+        }
+    }
   }, [currentSongIndex]);
 
 
   const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    setIsPlaying(!isPlaying);
   };
 
   const playNextSong = () => {
@@ -66,8 +68,7 @@ export function MusicPlayer() {
   
   const handleTimeUpdate = () => {
     if (audioRef.current?.ended) {
-        const nextIndex = (currentSongIndex + 1) % songs.length;
-        setCurrentSongIndex(nextIndex);
+      playNextSong();
     }
   };
 
@@ -103,8 +104,6 @@ export function MusicPlayer() {
         <audio 
             ref={audioRef} 
             src={songs[currentSongIndex].audioSrc} 
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
             onTimeUpdate={handleTimeUpdate}
             onLoadedData={() => {
               if (isPlaying) audioRef.current?.play().catch(e => console.error("Error al reproducir audio:", e));
