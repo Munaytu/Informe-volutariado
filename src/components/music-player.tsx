@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Music, Play, Pause, Forward, Rewind, Link as LinkIcon } from 'lucide-react';
@@ -32,6 +32,19 @@ export function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.src = songs[currentSongIndex].audioSrc;
+      if (isPlaying) {
+        audioElement.play().catch(e => console.error("Error al reproducir audio:", e));
+      } else {
+        audioElement.pause();
+      }
+    }
+  }, [currentSongIndex]);
+
+
   const togglePlayPause = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -44,20 +57,17 @@ export function MusicPlayer() {
   };
 
   const playNextSong = () => {
-    const nextIndex = (currentSongIndex + 1) % songs.length;
-    setCurrentSongIndex(nextIndex);
-    setIsPlaying(false); // Auto-play can be added if desired
+    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % songs.length);
   };
 
   const playPrevSong = () => {
-    const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    setCurrentSongIndex(prevIndex);
-    setIsPlaying(false);
+    setCurrentSongIndex((prevIndex) => (prevIndex - 1 + songs.length) % songs.length);
   };
   
   const handleTimeUpdate = () => {
     if (audioRef.current?.ended) {
-      playNextSong();
+        const nextIndex = (currentSongIndex + 1) % songs.length;
+        setCurrentSongIndex(nextIndex);
     }
   };
 
@@ -92,13 +102,12 @@ export function MusicPlayer() {
         </div>
         <audio 
             ref={audioRef} 
-            key={songs[currentSongIndex].audioSrc}
             src={songs[currentSongIndex].audioSrc} 
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onTimeUpdate={handleTimeUpdate}
             onLoadedData={() => {
-              if (isPlaying) audioRef.current?.play();
+              if (isPlaying) audioRef.current?.play().catch(e => console.error("Error al reproducir audio:", e));
             }}
         />
       </CardContent>
