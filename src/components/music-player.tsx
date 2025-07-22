@@ -16,11 +16,11 @@ export function MusicPlayer() {
             <Music className="w-6 h-6 text-primary" />
           </div>
           <div>
-            <p className="font-semibold font-headline">Song for Gregoria Apaza</p>
-            <p className="text-sm text-muted-foreground">A tribute from the heart</p>
+            <p className="font-semibold font-headline">Canción para Gregoria Apaza</p>
+            <p className="text-sm text-muted-foreground">Un homenaje desde el corazón</p>
           </div>
         </div>
-        <Button variant="ghost" size="icon" onClick={() => setIsPlaying(!isPlaying)} aria-label={isPlaying ? "Pause music" : "Play music"}>
+        <Button variant="ghost" size="icon" onClick={() => setIsPlaying(!isPlaying)} aria-label={isPlaying ? "Pausar música" : "Reproducir música"}>
           {isPlaying ? <Pause className="h-6 w-6 text-primary" /> : <Play className="h-6 w-6 text-primary" />}
         </Button>
       </CardContent>

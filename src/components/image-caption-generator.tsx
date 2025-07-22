@@ -38,8 +38,8 @@ export function ImageCaptionGenerator() {
     if (!photoDataUri) {
       toast({
         variant: 'destructive',
-        title: 'No Image Selected',
-        description: 'Please upload an image to generate a caption.',
+        title: 'No se ha seleccionado ninguna imagen',
+        description: 'Por favor, sube una imagen para generar un pie de foto.',
       });
       return;
     }
@@ -50,11 +50,11 @@ export function ImageCaptionGenerator() {
       const result = await generateImageCaption({ photoDataUri, userPrompt });
       setGeneratedCaption(result.caption);
     } catch (error) {
-      console.error('Error generating caption:', error);
+      console.error('Error generando el pie de foto:', error);
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Failed to generate caption. Please try again.',
+        description: 'No se pudo generar el pie de foto. Por favor, inténtalo de nuevo.',
       });
     } finally {
       setIsLoading(false);
@@ -66,10 +66,10 @@ export function ImageCaptionGenerator() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline text-2xl text-accent">
           <Bot />
-          AI-Powered Storytelling
+          Narrativa con IA
         </CardTitle>
         <CardDescription>
-          In my communication role, AI was a great ally. Use this tool to see how I generated ideas and captions for my photos.
+          En mi rol de comunicación, la IA fue una gran aliada. Usa esta herramienta para ver cómo generaba ideas y pies de foto para mis imágenes.
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit} className="flex flex-col flex-grow">
@@ -77,22 +77,22 @@ export function ImageCaptionGenerator() {
           <div className="space-y-2">
             <Label htmlFor="image-upload" className="font-semibold flex items-center gap-2 cursor-pointer">
               <ImageIcon className="text-muted-foreground" />
-              <span>1. Upload an Image</span>
+              <span>1. Sube una Imagen</span>
             </Label>
             <Input id="image-upload" type="file" accept="image/*" onChange={handleFileChange} className="cursor-pointer file:text-accent file:font-semibold"/>
           </div>
 
           {imagePreview && (
             <div className="mt-4">
-              <img src={imagePreview} alt="Selected preview" className="rounded-md object-cover w-full h-48" />
+              <img src={imagePreview} alt="Vista previa de la imagen seleccionada" className="rounded-md object-cover w-full h-48" />
             </div>
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="user-prompt" className="font-semibold">2. Guiding Prompt (Optional)</Label>
+            <Label htmlFor="user-prompt" className="font-semibold">2. Indicación (Opcional)</Label>
             <Textarea
               id="user-prompt"
-              placeholder="e.g., A moment of peace by the lake..."
+              placeholder="Ej: Un momento de paz junto al lago..."
               value={userPrompt}
               onChange={(e) => setUserPrompt(e.target.value)}
             />
@@ -100,7 +100,7 @@ export function ImageCaptionGenerator() {
 
           {generatedCaption && (
             <div className="p-4 bg-primary/10 rounded-md border border-primary/20">
-              <p className="font-semibold text-primary flex items-center gap-2"><Sparkles className="text-accent" /> Generated Caption:</p>
+              <p className="font-semibold text-primary flex items-center gap-2"><Sparkles className="text-accent" /> Pie de foto generado:</p>
               <p className="text-primary/90 mt-2 italic">"{generatedCaption}"</p>
             </div>
           )}
@@ -110,10 +110,10 @@ export function ImageCaptionGenerator() {
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating...
+                Generando...
               </>
             ) : (
-              '3. Generate Caption'
+              '3. Generar Pie de Foto'
             )}
           </Button>
         </CardFooter>
