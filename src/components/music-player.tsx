@@ -10,19 +10,19 @@ const songs = [
   {
     title: "Canción para Gregoria Apaza 1",
     description: "Un homenaje desde el corazón.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/9a1.mp3",
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/Andean-Echoes-Track-1.mp3",
     link: "https://soundcloud.com/gregoria-apaza-cpmga/9a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   },
   {
     title: "Canción para Gregoria Apaza 2",
     description: "Melodías de cambio y esperanza.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/12a1.mp3",
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/Andean-Echoes-Track-2.mp3",
     link: "https://soundcloud.com/gregoria-apaza-cpmga/12a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   },
   {
     title: "Canción para Gregoria Apaza 3",
     description: "El sonido de la resiliencia.",
-    audioSrc: "https://storage.googleapis.com/studioprod-bucket/14a1.mp3",
+    audioSrc: "https://storage.googleapis.com/studioprod-bucket/Andean-Echoes-Track-3.mp3",
     link: "https://soundcloud.com/gregoria-apaza-cpmga/14a1?in=gregoria-apaza-cpmga/sets/juntas-hacemos-historia"
   }
 ];
@@ -92,6 +92,7 @@ export function MusicPlayer() {
         </div>
         <audio 
             ref={audioRef} 
+            key={songs[currentSongIndex].audioSrc}
             src={songs[currentSongIndex].audioSrc} 
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
