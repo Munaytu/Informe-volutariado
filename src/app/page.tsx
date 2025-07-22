@@ -26,7 +26,6 @@ import {
   Cloudy,
   Tractor,
 } from 'lucide-react';
-import { ImageCaptionGenerator } from '@/components/image-caption-generator';
 import { InteractiveMap } from '@/components/interactive-map';
 import { MusicPlayer } from '@/components/music-player';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -157,23 +156,21 @@ export default function AndeanEchoesPage() {
         </div>
       </section>
 
-      {/* Creativity & AI Section */}
+      {/* Creativity Section */}
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="font-headline text-4xl md:text-5xl text-accent">Mi creatividad también floreció aquí.</h2>
           </div>
-          <div className="grid lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2 space-y-6 text-lg">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6 text-lg">
                 <p>Me uní a un grupo de sikuris para presentarme en una celebración, y también me animé a cantar como cantautora en un espacio cultural de La Paz. Una de las cosas que más disfruté fue componer una canción para el Centro Gregoria Apaza, con letras que reflejan sus valores y su misión. Fue una manera de aportar desde el arte.</p>
+                <p>En mi rol de comunicación, la inteligencia artificial fue una gran aliada, ayudándome a generar ideas, planificar, mejorar documentos y publicaciones.</p>
                 <MusicPlayer />
-                <div className="grid grid-cols-2 gap-4">
-                    <Image src="https://placehold.co/300x200.png" data-ai-hint="sikuri performance" width={300} height={200} alt="Tocando sikuris con un grupo" className="rounded-lg shadow-lg"/>
-                    <Image src="https://placehold.co/300x200.png" data-ai-hint="singing concert" width={300} height={200} alt="Cantando en un centro cultural" className="rounded-lg shadow-lg"/>
-                </div>
             </div>
-            <div className="lg:col-span-3">
-              <ImageCaptionGenerator />
+            <div className="grid grid-cols-2 gap-4">
+                <Image src="https://placehold.co/300x200.png" data-ai-hint="sikuri performance" width={300} height={200} alt="Tocando sikuris con un grupo" className="rounded-lg shadow-lg"/>
+                <Image src="https://placehold.co/300x200.png" data-ai-hint="singing concert" width={300} height={200} alt="Cantando en un centro cultural" className="rounded-lg shadow-lg"/>
             </div>
           </div>
         </div>
@@ -245,5 +242,3 @@ export default function AndeanEchoesPage() {
     </main>
   );
 }
-
-    
