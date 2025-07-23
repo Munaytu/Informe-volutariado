@@ -57,7 +57,7 @@ export default function AndeanEchoesPage() {
                 Ecos Andinos
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-                No fue solo un voluntariado; fue la promesa de un viaje a lo desconocido, un eco de mi pasión por descubrir. Y tambien un Voluntariado!
+                No fue solo un voluntariado; fue la promesa de un viaje a lo desconocido, un eco de mi pasión por descubrir. Y bueno... tambien un Voluntariado!
               </p>
             </div>
           </section>
@@ -95,7 +95,7 @@ export default function AndeanEchoesPage() {
                 </div>
                 <motion.div {...fadeIn} className="space-y-4 mt-8 text-lg">
                   <p>Las cholitas, con sus polleras de colores y sus sombreros, caminan con una fuerza y dignidad únicas. Me aventuré a ver a los brujos en El Alto, un lugar misterioso lleno de ofrendas y secretos. Y el teleférico, una red de hilos de plata, te eleva sobre todo, regalándote una vista mágica de la ciudad y un respiro del bullicio de abajo.</p>
-                  <p>Esa fue mi primera gran lección cultural. Recuerdo el día que llegué: dejé mis maletas y corrí al mercado a buscar un jugo de frutas, tan frescos y abundantes aquí, y me enamoré de la palta, que se volvió mi compañera diaria. Así empezó mi aventura boliviana, siendo voluntaria desde el primer día.</p>
+                  <p>Esa fue mi primera gran lección cultural. Recuerdo el día que llegué: dejé mis maletas y corrí al mercado a buscar un jugo de frutas, tan frescos y abundantes aquí, y me enamoré de la palta, que se volvió mi compañera diaria. Así empezó mi aventura boliviana, siendo voluntario desde el primer día.</p>
                 </motion.div>
               </div>
             </section>
@@ -185,7 +185,7 @@ export default function AndeanEchoesPage() {
                     <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
                   </motion.div>
                   <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
-                    <Image src="/images/fotos con promotoras comunitarias en lago.jpg" width={600} height={400} alt="Fotos con promotoras comunitarias en lago." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                    <Image src="/images/fotos con promotores comunitarios en lago.jpg" width={600} height={400} alt="Fotos con promotores comunitarios en lago." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
                   </motion.div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function AndeanEchoesPage() {
               <div className="container mx-auto max-w-4xl px-4 text-lg glassmorphism">
                   <motion.div {...fadeIn} className="text-center mb-12">
                       <h2 className="font-headline text-4xl md:text-5xl text-accent">Aprendizaje y Adaptación</h2>
-                      <p className="mt-2 text-muted-foreground">El camino del voluntariado en Bolivia, aunque lleno de maravillas, también tuvo sus pruebas.</p>
+                      <p className="mt-2 text-muted-foreground">El camino del voluntariodo en Bolivia, aunque lleno de maravillas, también tuvo sus pruebas.</p>
                   </motion.div>
                   <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-8">
                       <div>
@@ -311,7 +311,7 @@ export default function AndeanEchoesPage() {
             <footer className="py-12 bg-gray-800 text-gray-300 font-body">
               <div className="container mx-auto text-center px-4">
                 <p className="font-headline text-2xl text-white mb-2">Un legado que me llevo.</p>
-                <p>Este voluntariado ha sido un recordatorio de que la resiliencia y la apertura a la vida son claves para crecer. Bolivia, con su belleza cultural y geográfica, y el CPMGA, con su incansable trabajo, me han regalado una experiencia invaluable. Listo para la próxima aventura, con los ojos abiertos y el corazón dispuesto a seguir aprendiendo de la vida.</p>
+                <p>Este voluntariodo ha sido un recordatorio de que la resiliencia y la apertura a la vida son claves para crecer. Bolivia, con su belleza cultural y geográfica, y el CPMGA, con su incansable trabajo, me han regalado una experiencia invaluable. Listo para la próxima aventura, con los ojos abiertos y el corazón dispuesto a seguir aprendiendo de la vida.</p>
                 <p>Ya no pienso, luego existo.
 Ahora siento, y por eso soy.
 Porque la razón que nos impusieron olvidó el alma.
