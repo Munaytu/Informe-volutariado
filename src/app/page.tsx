@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import {
   MapPin,
   Mountain,
@@ -27,7 +26,6 @@ import {
   Tractor,
 } from 'lucide-react';
 import { InteractiveMap } from '@/components/interactive-map';
-import { MusicPlayer } from '@/components/music-player';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Link from 'next/link';
 
@@ -165,8 +163,26 @@ export default function AndeanEchoesPage() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 text-lg">
                 <p>Me uní a un grupo de sikuris para presentarme en una celebración, y también me animé a cantar como cantautora en un espacio cultural de La Paz. Una de las cosas que más disfruté fue componer una canción para el Centro Gregoria Apaza, con letras que reflejan sus valores y su misión. Fue una manera de aportar desde el arte.</p>
-                <p>En mi rol de comunicación, la inteligencia artificial fue una gran aliada, ayudándome a generar ideas, planificar, mejorar documentos y publicaciones.</p>
-                <MusicPlayer />
+                <div className="space-y-8">
+                  <div>
+                    <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795504&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                    <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
+                      <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/14a1" title="14" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>14</a>
+                    </div>
+                  </div>
+                  <div>
+                    <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795488&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                    <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
+                      <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/12a1" title="12" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>12</a>
+                    </div>
+                  </div>
+                  <div>
+                    <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795477&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                    <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
+                      <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/9a1" title="9" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>9</a>
+                    </div>
+                  </div>
+                </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
                 <Image src="https://placehold.co/300x200.png" data-ai-hint="sikuri performance" width={300} height={200} alt="Tocando sikuris con un grupo" className="rounded-lg shadow-lg"/>
