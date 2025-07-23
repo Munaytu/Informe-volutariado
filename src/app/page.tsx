@@ -85,8 +85,8 @@ export default function AndeanEchoesPage() {
                     <p>El Illimani, ese nevado gigante, observa la ciudad como un guardián antiguo. Los valles del Altiplano se extienden bajo un cielo tan azul que parece pintado. Fue una sorpresa para mis ojos, sí, pero también un recordatorio constante de la altura: cada paso por esas empinadas calles era un desafío para los pulmones, un esfuerzo que te dejaba sin aire, pero te hacía sentir intensamente vivo.</p>
                     <p>La ciudad misma es un baile constante, un río de gente y sonidos. “La Paz en movimiento”, dicen, y así es. El tráfico, esa marea de coches y minibuses, al principio me llenaba de frustración, pero pronto aprendí a verlo como parte del espectáculo, una pausa para observar la vida desde la ventana.</p>
                   </motion.div>
-                  <motion.div {...fadeIn}>
-                    <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300" style={{objectFit: "cover"}}/>
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
                   </motion.div>
                 </div>
                 <motion.div {...fadeIn} className="space-y-4 mt-8 text-lg">
@@ -124,53 +124,67 @@ export default function AndeanEchoesPage() {
             
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto max-w-5xl px-4">
-                <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="space-y-4 text-lg">
-                      <h3 className="font-headline text-3xl md:text-4xl text-primary">Explorando y Entendiendo</h3>
-                      <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
-                      <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Al convivir con la gente de estas tierras, comencé a sentir no solo su hospitalidad, sino también la profundidad de una cultura viva, tejida con los hilos del tiempo y el cielo. Conocí a un astrólogo local que me enseñó a leer las estrellas como lo hacían los sabios tiwanakotas, comprendiendo el cielo no solo como un mapa, sino como una guía espiritual y temporal. A su lado, empecé a entender por qué culturas ancestrales como la de Tiwanaku eligieron estos lugares elevados, tan cerca de los astros, para levantar sus templos y realizar sus rituales sagrados: no era casualidad, era armonía. Todo tenía su momento, su ritmo, su propósito. Y al ver el mundo desde esa perspectiva, también comencé a reflexionar sobre mis propios tiempos, mis raíces y mi forma de habitar el presente.</p>
+                <motion.div {...fadeIn} className="text-center mb-12">
+                  <h3 className="font-headline text-3xl md:text-4xl text-primary">Explorando y Entendiendo</h3>
+                </motion.div>
+                <motion.div {...fadeIn} className="space-y-4 text-lg mb-12">
+                  <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
+                  <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Al convivir con la gente de estas tierras, comencé a sentir no solo su hospitalidad, sino también la profundidad de una cultura viva, tejida con los hilos del tiempo y el cielo. Conocí a un astrólogo local que me enseñó a leer las estrellas como lo hacían los sabios tiwanakotas, comprendiendo el cielo no solo como un mapa, sino como una guía espiritual y temporal. A su lado, empecé a entender por qué culturas ancestrales como la de Tiwanaku eligieron estos lugares elevados, tan cerca de los astros, para levantar sus templos y realizar sus rituales sagrados: no era casualidad, era armonía. Todo tenía su momento, su ritmo, su propósito. Y al ver el mundo desde esa perspectiva, también comencé a reflexionar sobre mis propios tiempos, mis raíces y mi forma de habitar el presente.</p>
+                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl col-span-1 md:col-span-2">
+                    <Image src="/images/restos arqueoligico unico.jpg" width={800} height={600} alt="Restos arqueológicos" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                  <div className="grid grid-rows-2 gap-4">
+                    <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                      <Image src="/images/llamita animal .jpg" width={400} height={300} alt="Llamita animal." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                    </motion.div>
+                    <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                      <Image src="/images/festividad de sikuri tocando .jpg" width={400} height={300} alt="Festividad de sikuri tocando." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                    </motion.div>
                   </div>
-                  <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
-                </motion.div>
-                <motion.div {...fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                  <Image src="/images/llamita animal .jpg" width={600} height={400} alt="Llamita animal." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                  <Image src="/images/festividad de sikuri tocando .jpg" width={600} height={400} alt="Festividad de sikuri tocando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                </motion.div>
+                </div>
               </div>
             </section>
 
             <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 bg-secondary rounded-xl">
-              <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="space-y-4 text-lg">
-                      <h3 className="font-headline text-3xl md:text-4xl text-primary">El Lago Sagrado de los Andes</h3>
-                      <p>El Lago Titicaca no es solo un cuerpo de agua: es un espejo del cielo, un corazón azul que late entre las montañas sagradas de los Andes. Su inmensidad impone, pero no intimida; abraza. Se dice que es el lago navegable más alto del mundo, y al estar allí, uno no duda de que también sea uno de los más milagrosos. Su luz cambia con el viento, sus aguas guardan los mitos de origen de los pueblos andinos, y su energía se percibe como una presencia viva, sabia, antigua.</p>
-                      <p>Las comunidades que habitan sus orillas —aymaras, quechuas, urus— no solo lo respetan: lo veneran. Lo llaman “el lago madre”, pues de él emergieron, según los mitos, los fundadores del Imperio Inca. En sus islas, como la Isla del Sol y la Isla de la Luna, aún pueden verse los restos de templos milenarios dedicados al culto solar y lunar. Allí, el tiempo parece suspenderse, y el silencio tiene un sonido propio.</p>
-                      <div className="py-4">
-                        <hr className="border-accent" />
-                      </div>
-                      <h4 className="font-headline text-2xl text-accent text-center">El Lago Sagrado</h4>
-                      <blockquote className="text-center italic text-gray-400">
-                        <p>Bajo el cielo que respira,<br/>me abraza la inmensidad del cosmos.</p>
-                        <p className="mt-4">El lago me mira con ojos de Wiracocha.<br/>Sus aguas ancestrales, espejos del cielo,<br/>me recuerdan secretos, me recuerdan mi propósito.</p>
-                        <p className="mt-4">Aquí, la memoria antigua aparece otra vez.<br/>Tiwanaku e Inkas en mi ser se funden.<br/>Kay Pacha y Hanan Pacha en mí se confunden.</p>
-                        <p className="mt-4">El Puma, guardián, mi espíritu guía.<br/>Aquí solo existe el eterno presente,<br/>lleno de un amor sin medida.</p>
-                        <p className="mt-4">No hay ayer. No hay mañana.</p>
-                        <p className="mt-4">Soy el lago.<br/>Soy el puma.<br/>Soy las estrellas.<br/>Soy todo. O el todo soy yo.<br/>Soy la nada. Y la nada soy yo.</p>
-                        <p className="mt-4">Siento la revelación otra vez.<br/>Y el viento dice:<br/>“Despierta. Ya era hora.”</p>
-                      </blockquote>
-                      <div className="py-4">
-                        <hr className="border-accent" />
-                      </div>
-                      <p>Fue en sus orillas, bajo ese cielo claro y profundo, donde compartí un almuerzo sencillo con un grupo de mujeres que, como el lago, han aprendido a resistir el paso del tiempo y las tormentas. En sus palabras encontré historias de lucha, silencios impuestos y una fuerza inquebrantable que me conmovió.</p>
-                      <p>Me impactó especialmente saber que muchas de ellas, pese a todo lo vivido, aún no conocen plenamente sus derechos. Pero la esperanza viaja a pie, y lo hace gracias a la labor del CPMGA y sus promotoras comunitarias: mujeres que llegan a los rincones más alejados, llevando conocimiento, acompañamiento y conciencia.</p>
-                      <p>Están sembrando luz, enseñando que no tienen que soportar la violencia, que tienen derecho a vivir con dignidad y libertad. Mi trabajo de documentación busca precisamente eso: amplificar sus voces, mostrar su realidad y fortalecer sus caminos.</p>
-                      <p>En el Titicaca, donde la tierra se une con el cielo, comprendí que la resiliencia es más que resistencia: es memoria, es despertar, es transformación.</p>
+              <motion.div {...fadeIn} className="text-center mb-12">
+                <h3 className="font-headline text-3xl md:text-4xl text-primary">El Lago Sagrado de los Andes</h3>
+              </motion.div>
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="space-y-4 text-lg">
+                  <p>El Lago Titicaca no es solo un cuerpo de agua: es un espejo del cielo, un corazón azul que late entre las montañas sagradas de los Andes. Su inmensidad impone, pero no intimida; abraza. Se dice que es el lago navegable más alto del mundo, y al estar allí, uno no duda de que también sea uno de los más milagrosos. Su luz cambia con el viento, sus aguas guardan los mitos de origen de los pueblos andinos, y su energía se percibe como una presencia viva, sabia, antigua.</p>
+                  <p>Las comunidades que habitan sus orillas —aymaras, quechuas, urus— no solo lo respetan: lo veneran. Lo llaman “el lago madre”, pues de él emergieron, según los mitos, los fundadores del Imperio Inca. En sus islas, como la Isla del Sol y la Isla de la Luna, aún pueden verse los restos de templos milenarios dedicados al culto solar y lunar. Allí, el tiempo parece suspenderse, y el silencio tiene un sonido propio.</p>
+                  <div className="py-4">
+                    <hr className="border-accent" />
                   </div>
-                  <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
-              </motion.div>
-              <motion.div {...fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                <Image src="/images/fotos con promotoras comunitarias en lago.jpg" width={600} height={400} alt="Fotos con promotoras comunitarias en lago." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-              </motion.div>
+                  <h4 className="font-headline text-2xl text-accent text-center">El Lago Sagrado</h4>
+                  <blockquote className="text-center italic text-gray-400">
+                    <p>Bajo el cielo que respira,<br/>me abraza la inmensidad del cosmos.</p>
+                    <p className="mt-4">El lago me mira con ojos de Wiracocha.<br/>Sus aguas ancestrales, espejos del cielo,<br/>me recuerdan secretos, me dan un propósito.</p>
+                    <p className="mt-4">Aquí, la memoria antigua aparece otra vez.<br/>Tiwanaku e Inkas en mi ser se funden.<br/>Kay Pacha y Hanan Pacha en mí se confunden.</p>
+                    <p className="mt-4">El Puma, guardián, mi espíritu guía.<br/>Aquí solo existe el eterno presente,<br/>lleno de un amor sin medida.</p>
+                    <p className="mt-4">No hay ayer. No hay mañana.</p>
+                    <p className="mt-4">Soy el lago.<br/>Soy el puma.<br/>Soy las estrellas.<br/>Soy todo. O el todo soy yo.<br/>Soy la nada. Y la nada soy yo.</p>
+                    <p className="mt-4">Siento la revelación otra vez.<br/>Y el viento dice:<br/>“Despierta. Ya era hora.”</p>
+                  </blockquote>
+                  <div className="py-4">
+                    <hr className="border-accent" />
+                  </div>
+                  <p>Fue en sus orillas, bajo ese cielo claro y profundo, donde compartí un almuerzo sencillo con un grupo de mujeres que, como el lago, han aprendido a resistir el paso del tiempo y las tormentas. En sus palabras encontré historias de lucha, silencios impuestos y una fuerza inquebrantable que me conmovió.</p>
+                  <p>Me impactó especialmente saber que muchas de ellas, pese a todo lo vivido, aún no conocen plenamente sus derechos. Pero la esperanza viaja a pie, y lo hace gracias a la labor del CPMGA y sus promotoras comunitarias: mujeres que llegan a los rincones más alejados, llevando conocimiento, acompañamiento y conciencia.</p>
+                  <p>Están sembrando luz, enseñando que no tienen que soportar la violencia, que tienen derecho a vivir con dignidad y libertad. Mi trabajo de documentación busca precisamente eso: amplificar sus voces, mostrar su realidad y fortalecer sus caminos.</p>
+                  <p>En el Titicaca, donde la tierra se une con el cielo, comprendí que la resiliencia es más que resistencia: es memoria, es despertar, es transformación.</p>
+                </div>
+                <div className="grid grid-cols-1 gap-4">
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/fotos con promotoras comunitarias en lago.jpg" width={600} height={400} alt="Fotos con promotoras comunitarias en lago." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                </div>
+              </div>
             </section>
             
             <section className="py-16 md:py-24">
@@ -199,35 +213,29 @@ export default function AndeanEchoesPage() {
                 <motion.div {...fadeIn} className="text-center mb-12">
                   <h2 className="font-headline text-4xl md:text-5xl text-accent">Mi creatividad también floreció aquí.</h2>
                 </motion.div>
-                <motion.div {...fadeIn} className="grid lg:grid-cols-2 gap-8 items-center">
-                  <div className="space-y-6 text-lg">
-                      <p>Me uní a un grupo de sikuris para presentarme en una celebración, y también me animé a cantar como cantautora en un espacio cultural de La Paz. Una de las cosas que más disfruté fue componer una canción para el Centro Gregoria Apaza, con letras que reflejan sus valores y su misión. Fue una manera de aportar desde el arte.</p>
-                  </div>
-                  <Carousel className="w-full max-w-md mx-auto">
-                    <CarouselContent>
-                      <CarouselItem>
-                        <Image src="/images/yo tocando sikuri.jpg" width={600} height={400} alt="Tocando sikuris" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                      </CarouselItem>
-                      <CarouselItem>
-                        <Image src="/images/presentacion musical en la paz de mi.jpg" width={600} height={400} alt="Cantando en La Paz" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                      </CarouselItem>
-                      <CarouselItem>
-                        <Image src="/images/yo tocando como solista en la paz.jpg" width={600} height={400} alt="Yo tocando como solista en La Paz." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                      </CarouselItem>
-                      <CarouselItem>
-                        <Image src="/images/chica de sikuri bailando.jpg" width={600} height={400} alt="Chica de sikuri bailando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                      </CarouselItem>
-                      <CarouselItem>
-                         <video width="600" height="400" controls className="rounded-lg shadow-lg">
-                           <source src="/images/grabacion que hice de mi ensayo de sikuri.mp4" type="video/mp4" />
-                           Your browser does not support the video tag.
-                         </video>
-                      </CarouselItem>
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
+                <motion.div {...fadeIn} className="space-y-6 text-lg max-w-4xl mx-auto mb-12">
+                  <p>Una de las experiencias más significativas que viví en La Paz fue unirme a un grupo de sikuris, guardianes de una tradición ancestral que resuena en los Andes como el eco profundo de nuestras raíces. El sonido de los sikus —instrumentos de viento comunitarios, imposibles de tocar en soledad— me enseñó una verdad poderosa: nadie suena completo si no suena con otros.</p>
+                  <p>Participar con ellos en una celebración festiva fue un verdadero honor. Al soplar juntos, sentí que no solo hacíamos música: tejíamos comunidad, respirábamos al mismo ritmo, invocábamos la memoria viva de los pueblos originarios y sus territorios sagrados.</p>
+                  <p>También me animé a compartir mi voz como cantautor, en diversos espacios culturales de La Paz, donde montañas como el Illimani y el Huayna Potosí parecían escucharme en silencio. En cada canción intentaba sembrar palabras que sanaran, letras inspiradas que toquen el alma y acompañen procesos de transformación interior.</p>
+                  <p>Fue mi manera de contribuir desde el arte: una semilla musical ofrecida a un territorio fértil de lucha, memoria y esperanza.</p>
                 </motion.div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/yo tocando sikuri.jpg" width={600} height={400} alt="Tocando sikuris" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/presentacion musical en la paz de mi.jpg" width={600} height={400} alt="Cantando en La Paz" className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl">
+                    <Image src="/images/yo tocando como solista en la paz.jpg" width={600} height={400} alt="Yo tocando como solista en La Paz." className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110" />
+                  </motion.div>
+                  <motion.div {...fadeIn} className="overflow-hidden rounded-lg shadow-xl col-span-2 md:col-span-2">
+                    <video width="600" height={400} controls className="rounded-lg shadow-lg w-full h-full object-cover">
+                      <source src="/images/grabacion que hice de mi ensayo de sikuri.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </motion.div>
+                </div>
               </div>
             </section>
 
@@ -284,6 +292,14 @@ export default function AndeanEchoesPage() {
                     <CarouselNext />
                   </Carousel>
                 </motion.div>
+              </div>
+            </section>
+
+            <section className="relative py-20 md:py-32">
+              <div className="absolute inset-0">
+                <Image src="/images/chica de sikuri bailando.jpg" layout="fill" objectFit="cover" alt="Chica de sikuri bailando." className="opacity-80"/>
+              </div>
+              <div className="relative z-10 container mx-auto px-4 text-center">
               </div>
             </section>
 
