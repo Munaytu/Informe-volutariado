@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import Image from 'next/image';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
-
+import { MusicPlayer } from '@/components/MusicPlayer';
+import { motion } from 'framer-motion';
 import {
   Card,
   CardContent,
@@ -19,35 +19,6 @@ import {
 } from 'lucide-react';
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { motion } from 'framer-motion';
-
-const songs = [
-  {
-    title: "Canción para Gregoria Apaza 1",
-    trackId: "2042795504"
-  },
-  {
-    title: "Canción para Gregoria Apaza 2",
-    trackId: "2042795488"
-  },
-  {
-    title: "Canción para Gregoria Apaza 3",
-    trackId: "2042795477"
-  }
-];
-
-function SoundCloudPlayer({ trackId }: { trackId: string }) {
-  return (
-    <iframe 
-      width="100%" 
-      height="120" 
-      scrolling="no" 
-      frameBorder="no" 
-      allow="autoplay" 
-      src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${trackId}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`}>
-    </iframe>
-  );
-}
 
 export default function AndeanEchoesPage() {
   const lenisRef = useRef();
@@ -68,6 +39,13 @@ export default function AndeanEchoesPage() {
     };
   }, []);
 
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" },
+    viewport: { once: true },
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden">
       <div className="overflow-y-auto">
@@ -80,30 +58,14 @@ export default function AndeanEchoesPage() {
               <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
                 No fue solo un voluntariado; fue la promesa de un viaje a lo desconocido, un eco de mi pasión por descubrir. Y tambien un Voluntariado!
               </p>
-              <div className="mt-8 space-y-2 max-w-md mx-auto">
-                <Accordion type="single" collapsible className="w-full">
-                  {songs.map((song, index) => (
-                    <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
-                      <AccordionTrigger className="text-white hover:no-underline">
-                        <span className="text-lg font-semibold">{song.title}</span>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <SoundCloudPlayer trackId={song.trackId} />
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
             </div>
           </section>
+          <MusicPlayer />
 
           <div className="relative bg-background">
             <motion.section
               className="container mx-auto max-w-4xl py-16 md:py-24 px-4 text-lg leading-relaxed space-y-8"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
+              {...fadeIn}
             >
               <h2 className="font-headline text-4xl md:text-5xl text-center text-primary mb-8">
                 De la Incertidumbre al Descubrimiento
@@ -118,20 +80,18 @@ export default function AndeanEchoesPage() {
                   <h2 className="font-headline text-4xl md:text-5xl text-primary">La Paz me recibió con un abrazo fuerte pero hermoso.</h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div className="space-y-4 text-lg">
-                    <p>El Illimani, ese nevado gigante, observa la ciudad como un guardián antiguo. Los valles del Altiplano se extienden bajo un cielo tan azul que parece pintado. Fue una sorpresa para mis ojos, sí, pero también un recordatorio constante de la altura: cada paso por esas empinadas calles era un desafío para los pulmones, un esfuerzo que te dejaba sin aire, pero te hacía sentir intensamente viva.</p>
+                  <motion.div {...fadeIn} className="space-y-4 text-lg">
+                    <p>El Illimani, ese nevado gigante, observa la ciudad como un guardián antiguo. Los valles del Altiplano se extienden bajo un cielo tan azul que parece pintado. Fue una sorpresa para mis ojos, sí, pero también un recordatorio constante de la altura: cada paso por esas empinadas calles era un desafío para los pulmones, un esfuerzo que te dejaba sin aire, pero te hacía sentir intensamente vivo.</p>
                     <p>La ciudad misma es un baile constante, un río de gente y sonidos. “La Paz en movimiento”, dicen, y así es. El tráfico, esa marea de coches y minibuses, al principio me llenaba de frustración, pero pronto aprendí a verlo como parte del espectáculo, una pausa para observar la vida desde la ventana.</p>
-                  </div>
-                  <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300" style={{objectFit: "cover"}}/>
+                  </motion.div>
+                  <motion.div {...fadeIn}>
+                    <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300" style={{objectFit: "cover"}}/>
+                  </motion.div>
                 </div>
-                <div className="space-y-4 mt-8 text-lg">
+                <motion.div {...fadeIn} className="space-y-4 mt-8 text-lg">
                   <p>Las cholitas, con sus polleras de colores y sus sombreros, caminan con una fuerza y dignidad únicas. Me aventuré a ver a los brujos en El Alto, un lugar misterioso lleno de ofrendas y secretos. Y el teleférico, una red de hilos de plata, te eleva sobre todo, regalándote una vista mágica de la ciudad y un respiro del bullicio de abajo.</p>
                   <p>Esa fue mi primera gran lección cultural. Recuerdo el día que llegué: dejé mis maletas y corrí al mercado a buscar un jugo de frutas, tan frescos y abundantes aquí, y me enamoré de la palta, que se volvió mi compañera diaria. Así empezó mi aventura boliviana, siendo voluntaria desde el primer día.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                  <Image src="/images/yo tocando en un concierto como solista.jpg" width={600} height={400} alt="Yo tocando en un concierto como solista." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                  <Image src="/images/chica de sikuri bailando.jpg" width={600} height={400} alt="Chica de sikuri bailando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                </div>
+                </motion.div>
               </div>
             </section>
 
@@ -140,36 +100,38 @@ export default function AndeanEchoesPage() {
                 <Image src="/images/trabajadores de gregoria .jpg" fill sizes="100vw" alt="Trabajadoras del Centro Gregoria Apaza" className="object-cover opacity-10"/>
               </div>
               <div className="container mx-auto max-w-4xl px-4 relative z-10 text-center">
-                  <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
-                  <h2 className="font-headline text-4xl md:text-5xl text-accent">En el Centro Gregoria Apaza me sentí en casa desde el primer momento.</h2>
-                  <div className="mt-8 text-lg leading-relaxed space-y-6 bg-background/80 backdrop-blur-sm p-8 rounded-lg shadow-lg text-left">
-                      <p>Fui recibida con los brazos abiertos por un equipo cálido y acogedor. Aunque el cansancio del viaje y la altura me pesaron un poco al principio, pronto me sumergí por completo en el ritmo de Gregoria.</p>
+                  <motion.div {...fadeIn}>
+                    <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
+                    <h2 className="font-headline text-4xl md:text-5xl text-accent">En el Centro Gregoria Apaza me sentí en casa desde el primer momento.</h2>
+                  </motion.div>
+                  <motion.div {...fadeIn} className="mt-8 text-lg leading-relaxed space-y-6 bg-background/80 backdrop-blur-sm p-8 rounded-lg shadow-lg text-left">
+                      <p>Fui recibido con los brazos abiertos por un equipo cálido y acogedor. Aunque el cansancio del viaje y la altura me pesaron un poco al principio, pronto me sumergí por completo en el ritmo de Gregoria.</p>
                       <p>Un día cualquiera en el centro es un torbellino de vida. Mujeres llegan buscando apoyo, se realizan talleres, y jóvenes curiosos aprenden sobre sus derechos. La energía es constante.</p>
                       <p>Mi equipo de comunicación siempre estaba atento a las múltiples actividades, planeando redes sociales y creando publicaciones. El almuerzo era un momento para reír, hablar de la vida, de los problemas de Bolivia y de las fiestas que siempre estaban por venir. Por la tarde, la actividad continuaba: fotos en algún taller, revisión de textos, reuniones para eventos futuros. Un día lleno de tareas y de valiosas conversaciones.</p>
                       <p className="font-bold">La semana más significativa fue cuando ayudamos a organizar un gran foro en La Paz. Ver reunidas a tantas organizaciones y presenciar la experiencia del equipo del CPMGA para mover un evento de esa magnitud fue una lección poderosa sobre trabajo en equipo. Allí sentí la verdadera fuerza de la institución.</p>
-                  </div>
+                  </motion.div>
               </div>
             </section>
             
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto max-w-5xl px-4">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
+                <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-4 text-lg">
                       <h3 className="font-headline text-3xl md:text-4xl text-primary">Explorando y Entendiendo</h3>
                       <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
                       <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Empecé a entender por qué culturas antiguas como la de Tiwanaku, con sus templos milenarios, eligieron estas tierras cercanas al cielo para sus rituales sagrados.</p>
                   </div>
                   <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                </motion.div>
+                <motion.div {...fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                   <Image src="/images/llamita animal .jpg" width={600} height={400} alt="Llamita animal." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
                   <Image src="/images/festividad de sikuri tocando .jpg" width={600} height={400} alt="Festividad de sikuri tocando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                </div>
+                </motion.div>
               </div>
             </section>
 
             <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 bg-secondary rounded-xl">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-4 text-lg">
                       <h3 className="font-headline text-3xl md:text-4xl text-primary">Susurros del Titicaca y Voces de Resiliencia</h3>
                       <p>El lago es tan grande que parece un mar, pero con la calma de la montaña. Fue allí, junto al lago, donde compartí un almuerzo sencillo con un grupo de mujeres.</p>
@@ -177,19 +139,19 @@ export default function AndeanEchoesPage() {
                       <p className="text-accent italic">Ellas están sembrando conciencia, mostrando que no tienen por qué permitir la violencia. Mi trabajo de documentación, al dar voz a estas experiencias, ayuda a visibilizar sus luchas y a fortalecer su camino hacia la libertad.</p>
                   </div>
                   <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+              </motion.div>
+              <motion.div {...fadeIn} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 <Image src="/images/fotos con promotoras comunitarias en lago.jpg" width={600} height={400} alt="Fotos con promotoras comunitarias en lago." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-              </div>
+              </motion.div>
             </section>
             
             <section className="py-16 md:py-24">
               <div className="container mx-auto max-w-4xl px-4 text-lg">
-                  <div className="text-center mb-12">
+                  <motion.div {...fadeIn} className="text-center mb-12">
                       <h2 className="font-headline text-4xl md:text-5xl text-accent">Aprendizaje y Adaptación</h2>
                       <p className="mt-2 text-muted-foreground">El camino del voluntariado en Bolivia, aunque lleno de maravillas, también tuvo sus pruebas.</p>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-8">
+                  </motion.div>
+                  <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-8">
                       <div>
                           <h3 className="font-headline text-2xl text-primary mb-2">Las Pruebas del Camino</h3>
                           <p>El clima fue un maestro exigente. Como dicen aquí, “La Paz no es para todos”: la altitud y los cambios de tiempo te ponen a prueba. El tráfico, esa serpiente de metal que se arrastra por las calles, se volvió un ejercicio diario de paciencia.</p>
@@ -200,41 +162,54 @@ export default function AndeanEchoesPage() {
                           <p>El aprendizaje más profundo fue el de “entender”. Comprender las raíces de los desafíos sociales de Bolivia, dejando de lado mis ideas preconcebidas. En lugar de juzgar, decidí participar, observar con curiosidad y tratar de comprender.</p>
                           <p className="mt-4">Esta actitud me permitió adaptarme no solo al clima y la logística, sino también a la complejidad social. Descubrí belleza y bondad en cada rincón, en cada persona. Desarrollé una capacidad de adaptación que considero inquebrantable.</p>
                       </div>
-                  </div>
+                  </motion.div>
               </div>
             </section>
 
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
+                <motion.div {...fadeIn} className="text-center mb-12">
                   <h2 className="font-headline text-4xl md:text-5xl text-accent">Mi creatividad también floreció aquí.</h2>
-                </div>
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                </motion.div>
+                <motion.div {...fadeIn} className="grid lg:grid-cols-2 gap-8 items-center">
                   <div className="space-y-6 text-lg">
                       <p>Me uní a un grupo de sikuris para presentarme en una celebración, y también me animé a cantar como cantautora en un espacio cultural de La Paz. Una de las cosas que más disfruté fue componer una canción para el Centro Gregoria Apaza, con letras que reflejan sus valores y su misión. Fue una manera de aportar desde el arte.</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                      <Image src="/images/yo tocando sikuri.jpg" width={300} height={200} alt="Tocando sikuris" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                      <Image src="/images/presentacion musical en la paz de mi.jpg" width={300} height={200} alt="Cantando en La Paz" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                  <Image src="/images/yo tocando como solista en la paz.jpg" width={600} height={400} alt="Yo tocando como solista en La Paz." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
-                  <div className="flex items-center justify-center">
-                     <video width="600" height="400" controls className="rounded-lg shadow-lg">
-                       <source src="/images/grabacion que hice de mi ensayo de sikuri.mp4" type="video/mp4" />
-                       Your browser does not support the video tag.
-                     </video>
-                  </div>
-                </div>
+                  <Carousel className="w-full max-w-md mx-auto">
+                    <CarouselContent>
+                      <CarouselItem>
+                        <Image src="/images/yo tocando sikuri.jpg" width={600} height={400} alt="Tocando sikuris" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <Image src="/images/presentacion musical en la paz de mi.jpg" width={600} height={400} alt="Cantando en La Paz" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <Image src="/images/yo tocando como solista en la paz.jpg" width={600} height={400} alt="Yo tocando como solista en La Paz." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <Image src="/images/chica de sikuri bailando.jpg" width={600} height={400} alt="Chica de sikuri bailando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                      </CarouselItem>
+                      <CarouselItem>
+                         <video width="600" height="400" controls className="rounded-lg shadow-lg">
+                           <source src="/images/grabacion que hice de mi ensayo de sikuri.mp4" type="video/mp4" />
+                           Your browser does not support the video tag.
+                         </video>
+                      </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </motion.div>
               </div>
             </section>
 
             <section className="py-16 md:py-24">
               <div className="container mx-auto px-4 text-center">
-                <h2 className="font-headline text-4xl md:text-5xl text-primary mb-4">Una Melodía Transformadora</h2>
-                <p className="mt-2 text-muted-foreground text-lg max-w-3xl mx-auto mb-12">Mi tiempo en Bolivia ha sido como una melodía transformadora. Lo que más resuena en mí es la capacidad de adaptación y la habilidad de encontrar belleza y bondad en cualquier lugar. Es una lección de vida que no tiene precio.</p>
-                  <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-left">
+                <motion.div {...fadeIn}>
+                  <h2 className="font-headline text-4xl md:text-5xl text-primary mb-4">Una Melodía Transformadora</h2>
+                  <p className="mt-2 text-muted-foreground text-lg max-w-3xl mx-auto mb-12">Mi tiempo en Bolivia ha sido como una melodía transformadora. Lo que más resuena en mí es la capacidad de adaptación y la habilidad de encontrar belleza y bondad en cualquier lugar. Es una lección de vida que no tiene precio.</p>
+                </motion.div>
+                  <motion.div {...fadeIn} className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-left">
                       <Card>
                           <CardHeader><CardTitle className="font-headline text-accent">En lo Personal</CardTitle></CardHeader>
                           <CardContent><p>Seré más consciente del rol del hombre en la sociedad y de la importancia de la igualdad con las mujeres. Las conversaciones y las historias aquí han abierto mis ojos de forma profunda.</p></CardContent>
@@ -245,38 +220,42 @@ export default function AndeanEchoesPage() {
                       </Card>
                       <Card>
                           <CardHeader><CardTitle className="font-headline text-accent">En lo Profesional</CardTitle></CardHeader>
-                          <CardContent><p>Mis habilidades en redacción, uso de herramientas digitales y gestión de redes sociales han crecido mucho. Estoy lista para aplicarlas en futuros proyectos.</p></CardContent>
+                          <CardContent><p>Mis habilidades en redacción, uso de herramientas digitales y gestión de redes sociales han crecido mucho. Estoy listo para aplicarlas en futuros proyectos.</p></CardContent>
                       </Card>
-                  </div>
+                  </motion.div>
               </div>
             </section>
             
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto px-4 text-center max-w-4xl">
-                <h2 className="font-headline text-4xl md:text-5xl text-primary mb-8">Un Legado para el Futuro</h2>
-                <p className="text-lg leading-relaxed mb-6">Esta experiencia en el Centro Gregoria Apaza ha sido un inmenso descubrimiento cultural y social. Me ha dado una nueva perspectiva sobre cómo las sociedades avanzan, cómo la gente se organiza en comunidades —como los antiguos ayllus— y cómo la vida se manifiesta de muchas formas.</p>
-                <p className="text-lg leading-relaxed mb-10">Mi visión del mundo, la que traía desde Europa, ha cambiado por completo. Ahora aprecio la riqueza y la complejidad de otras realidades con una mirada más abierta y comprensiva.</p>
-                <Carousel className="w-full max-w-2xl mx-auto" opts={{loop: true}}>
-                  <CarouselContent>
-                    <CarouselItem>
-                      <Card className="bg-background">
-                        <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Droplets/> Riqueza Cultural y Geográfica</CardTitle></CardHeader>
-                      </Card>
-                    </CarouselItem>
-                    <CarouselItem>
-                      <Card className="bg-background">
-                        <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Sparkles/> Crecimiento Personal y Aprendizaje Profundo</CardTitle></CardHeader>
-                      </Card>
-                    </CarouselItem>
-                    <CarouselItem>
-                      <Card className="bg-background">
-                        <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Mountain/> Adaptación y Resiliencia</CardTitle></CardHeader>
-                      </Card>
-                    </CarouselItem>
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
+                <motion.div {...fadeIn}>
+                  <h2 className="font-headline text-4xl md:text-5xl text-primary mb-8">Un Legado para el Futuro</h2>
+                  <p className="text-lg leading-relaxed mb-6">Esta experiencia en el Centro Gregoria Apaza ha sido un inmenso descubrimiento cultural y social. Me ha dado una nueva perspectiva sobre cómo las sociedades avanzan, cómo la gente se organiza en comunidades —como los antiguos ayllus— y cómo la vida se manifiesta de muchas formas.</p>
+                  <p className="text-lg leading-relaxed mb-10">Mi visión del mundo, la que traía desde Europa, ha cambiado por completo. Ahora aprecio la riqueza y la complejidad de otras realidades con una mirada más abierta y comprensiva.</p>
+                </motion.div>
+                <motion.div {...fadeIn}>
+                  <Carousel className="w-full max-w-2xl mx-auto" opts={{loop: true}}>
+                    <CarouselContent>
+                      <CarouselItem>
+                        <Card className="bg-background">
+                          <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Droplets/> Riqueza Cultural y Geográfica</CardTitle></CardHeader>
+                        </Card>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <Card className="bg-background">
+                          <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Sparkles/> Crecimiento Personal y Aprendizaje Profundo</CardTitle></CardHeader>
+                        </Card>
+                      </CarouselItem>
+                      <CarouselItem>
+                        <Card className="bg-background">
+                          <CardHeader><CardTitle className="font-headline text-accent flex items-center justify-center gap-2"><Mountain/> Adaptación y Resiliencia</CardTitle></CardHeader>
+                        </Card>
+                      </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </motion.div>
               </div>
             </section>
 
@@ -284,7 +263,7 @@ export default function AndeanEchoesPage() {
             <footer className="py-12 bg-gray-800 text-gray-300 font-body">
               <div className="container mx-auto text-center px-4">
                 <p className="font-headline text-2xl text-white mb-2">Un legado que me llevo.</p>
-                <p>Este voluntariado ha sido un recordatorio de que la resiliencia y la apertura a la vida son claves para crecer. Bolivia, con su belleza cultural y geográfica, y el CPMGA, con su incansable trabajo, me han regalado una experiencia invaluable. Lista para la próxima aventura, con los ojos abiertos y el corazón dispuesto a seguir aprendiendo de la vida.</p>
+                <p>Este voluntariado ha sido un recordatorio de que la resiliencia y la apertura a la vida son claves para crecer. Bolivia, con su belleza cultural y geográfica, y el CPMGA, con su incansable trabajo, me han regalado una experiencia invaluable. Listo para la próxima aventura, con los ojos abiertos y el corazón dispuesto a seguir aprendiendo de la vida.</p>
                 <div className="mt-6">
                     <p>&copy; {new Date().getFullYear()} Ecos Andinos. Una historia de transformación.</p>
                 </div>
