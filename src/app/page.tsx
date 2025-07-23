@@ -1,8 +1,9 @@
-'use client'; // Necesario para usar hooks de cliente y framer-motion
+'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import Image from 'next/image';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 import {
   Card,
@@ -20,11 +21,37 @@ import {
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { motion } from 'framer-motion';
 
+const songs = [
+  {
+    title: "Canción para Gregoria Apaza 1",
+    trackId: "2042795504"
+  },
+  {
+    title: "Canción para Gregoria Apaza 2",
+    trackId: "2042795488"
+  },
+  {
+    title: "Canción para Gregoria Apaza 3",
+    trackId: "2042795477"
+  }
+];
+
+function SoundCloudPlayer({ trackId }: { trackId: string }) {
+  return (
+    <iframe 
+      width="100%" 
+      height="120" 
+      scrolling="no" 
+      frameBorder="no" 
+      allow="autoplay" 
+      src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${trackId}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`}>
+    </iframe>
+  );
+}
 
 export default function AndeanEchoesPage() {
   const lenisRef = useRef();
 
-  // Inicializar Lenis para smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
     lenisRef.current = lenis;
@@ -43,23 +70,34 @@ export default function AndeanEchoesPage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Contenido principal */}
-      <div className="relative z-10 overflow-y-auto">
-          {/* Hero Section */}
-          <section className="relative h-screen flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: 'url(/images/foto general de la paz desde el alto.jpg)' }}>
+      <div className="overflow-y-auto">
+          <section className="relative h-screen flex items-center justify-center text-center text-white bg-cover bg-center" style={{ backgroundImage: 'url(/images/foto%20general%20de%20la%20paz%20desde%20el%20alto.jpg)' }}>
             <div className="absolute inset-0 bg-black/50"></div>
-            <div className="relative z-10 p-4 animate-fade-in-down">
+            <div className="relative z-10 p-4">
               <h1 className="font-headline text-5xl md:text-8xl font-bold tracking-tighter">
                 Ecos Andinos
               </h1>
               <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-                No fue solo un voluntariado; fue la promesa de un viaje a lo desconocido, un eco de mi pasión por descubrir.
+                No fue solo un voluntariado; fue la promesa de un viaje a lo desconocido, un eco de mi pasión por descubrir. Y tambien un Voluntariado!
               </p>
+              <div className="mt-8 space-y-2 max-w-md mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                  {songs.map((song, index) => (
+                    <AccordionItem key={index} value={`item-${index}`} className="border-white/20">
+                      <AccordionTrigger className="text-white hover:no-underline">
+                        <span className="text-lg font-semibold">{song.title}</span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <SoundCloudPlayer trackId={song.trackId} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </div>
           </section>
 
           <div className="relative bg-background">
-            {/* Introduction */}
             <motion.section
               className="container mx-auto max-w-4xl py-16 md:py-24 px-4 text-lg leading-relaxed space-y-8"
               initial={{ opacity: 0, y: 50 }}
@@ -74,7 +112,6 @@ export default function AndeanEchoesPage() {
               <p>Buscaba un mundo diferente, y Bolivia me lo entregó con creces.</p>
             </motion.section>
             
-            {/* La Paz Section */}
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto max-w-5xl px-4">
                 <div className="text-center mb-12">
@@ -85,19 +122,22 @@ export default function AndeanEchoesPage() {
                     <p>El Illimani, ese nevado gigante, observa la ciudad como un guardián antiguo. Los valles del Altiplano se extienden bajo un cielo tan azul que parece pintado. Fue una sorpresa para mis ojos, sí, pero también un recordatorio constante de la altura: cada paso por esas empinadas calles era un desafío para los pulmones, un esfuerzo que te dejaba sin aire, pero te hacía sentir intensamente viva.</p>
                     <p>La ciudad misma es un baile constante, un río de gente y sonidos. “La Paz en movimiento”, dicen, y así es. El tráfico, esa marea de coches y minibuses, al principio me llenaba de frustración, pero pronto aprendí a verlo como parte del espectáculo, una pausa para observar la vida desde la ventana.</p>
                   </div>
-                  <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"/>
+                  <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300" style={{objectFit: "cover"}}/>
                 </div>
                 <div className="space-y-4 mt-8 text-lg">
                   <p>Las cholitas, con sus polleras de colores y sus sombreros, caminan con una fuerza y dignidad únicas. Me aventuré a ver a los brujos en El Alto, un lugar misterioso lleno de ofrendas y secretos. Y el teleférico, una red de hilos de plata, te eleva sobre todo, regalándote una vista mágica de la ciudad y un respiro del bullicio de abajo.</p>
                   <p>Esa fue mi primera gran lección cultural. Recuerdo el día que llegué: dejé mis maletas y corrí al mercado a buscar un jugo de frutas, tan frescos y abundantes aquí, y me enamoré de la palta, que se volvió mi compañera diaria. Así empezó mi aventura boliviana, siendo voluntaria desde el primer día.</p>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                  <Image src="/images/yo tocando en un concierto como solista.jpg" width={600} height={400} alt="Yo tocando en un concierto como solista." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                  <Image src="/images/chica de sikuri bailando.jpg" width={600} height={400} alt="Chica de sikuri bailando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                </div>
               </div>
             </section>
 
-            {/* Gregoria Apaza Section */}
             <section className="relative py-20 md:py-32">
               <div className="absolute inset-0">
-                <Image src="/images/trabajadores de gregoria .jpg" layout="fill" objectFit="cover" alt="Trabajadoras del Centro Gregoria Apaza" className="opacity-10"/>
+                <Image src="/images/trabajadores de gregoria .jpg" fill sizes="100vw" alt="Trabajadoras del Centro Gregoria Apaza" className="object-cover opacity-10"/>
               </div>
               <div className="container mx-auto max-w-4xl px-4 relative z-10 text-center">
                   <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
@@ -111,7 +151,6 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
             
-            {/* Exploration Section */}
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto max-w-5xl px-4">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -120,12 +159,15 @@ export default function AndeanEchoesPage() {
                       <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
                       <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Empecé a entender por qué culturas antiguas como la de Tiwanaku, con sus templos milenarios, eligieron estas tierras cercanas al cielo para sus rituales sagrados.</p>
                   </div>
-                  <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl"/>
+                  <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                  <Image src="/images/llamita animal .jpg" width={600} height={400} alt="Llamita animal." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                  <Image src="/images/festividad de sikuri tocando .jpg" width={600} height={400} alt="Festividad de sikuri tocando." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
                 </div>
               </div>
             </section>
 
-            {/* Titicaca & Stories Section */}
             <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 bg-secondary rounded-xl">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-4 text-lg">
@@ -134,11 +176,13 @@ export default function AndeanEchoesPage() {
                       <p>Sus historias de vida, sus luchas y su fuerza me enseñaron lecciones profundas sobre la resiliencia humana. Lo que más me impactó fue descubrir que muchas mujeres, a pesar de lo que han vivido, no conocen sus propios derechos. Pero la labor incansable del CPMGA, a través de sus proyectos y promotoras comunitarias que llegan a los rincones más lejanos, está cambiando esto.</p>
                       <p className="text-accent italic">Ellas están sembrando conciencia, mostrando que no tienen por qué permitir la violencia. Mi trabajo de documentación, al dar voz a estas experiencias, ayuda a visibilizar sus luchas y a fortalecer su camino hacia la libertad.</p>
                   </div>
-                  <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl"/>
+                  <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <Image src="/images/fotos con promotoras comunitarias en lago.jpg" width={600} height={400} alt="Fotos con promotoras comunitarias en lago." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
               </div>
             </section>
             
-            {/* Challenges Section */}
             <section className="py-16 md:py-24">
               <div className="container mx-auto max-w-4xl px-4 text-lg">
                   <div className="text-center mb-12">
@@ -160,7 +204,6 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
 
-            {/* Creativity Section */}
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
@@ -169,36 +212,24 @@ export default function AndeanEchoesPage() {
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   <div className="space-y-6 text-lg">
                       <p>Me uní a un grupo de sikuris para presentarme en una celebración, y también me animé a cantar como cantautora en un espacio cultural de La Paz. Una de las cosas que más disfruté fue componer una canción para el Centro Gregoria Apaza, con letras que reflejan sus valores y su misión. Fue una manera de aportar desde el arte.</p>
-                      <div className="space-y-8">
-                        <div>
-                          <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795504&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                          <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
-                            <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/14a1" title="14" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>14</a>
-                          </div>
-                        </div>
-                        <div>
-                          <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795488&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                          <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
-                            <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/12a1" title="12" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>12</a>
-                          </div>
-                        </div>
-                        <div>
-                          <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2042795477&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                          <div style={{fontSize: '10px', color: '#cccccc', lineHeight: 'normal', wordBreak: 'normal', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif', fontWeight: 100}}>
-                            <a href="https://soundcloud.com/gregoria-apaza-cpmga" title="Gregoria Apaza CPMGA" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>Gregoria Apaza CPMGA</a> · <a href="https://soundcloud.com/gregoria-apaza-cpmga/9a1" title="9" target="_blank" rel="noopener noreferrer" style={{color: '#cccccc', textDecoration: 'none'}}>9</a>
-                          </div>
-                        </div>
-                      </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                      <Image src="/images/yo tocando sikuri.jpg" width={300} height={200} alt="Tocando sikuris" className="rounded-lg shadow-lg"/>
-                      <Image src="/images/presentacion musical en la paz de mi.jpg" width={300} height={200} alt="Cantando en La Paz" className="rounded-lg shadow-lg"/>
+                      <Image src="/images/yo tocando sikuri.jpg" width={300} height={200} alt="Tocando sikuris" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                      <Image src="/images/presentacion musical en la paz de mi.jpg" width={300} height={200} alt="Cantando en La Paz" className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                  <Image src="/images/yo tocando como solista en la paz.jpg" width={600} height={400} alt="Yo tocando como solista en La Paz." className="rounded-lg shadow-lg" style={{objectFit: "cover"}}/>
+                  <div className="flex items-center justify-center">
+                     <video width="600" height="400" controls className="rounded-lg shadow-lg">
+                       <source src="/images/grabacion que hice de mi ensayo de sikuri.mp4" type="video/mp4" />
+                       Your browser does not support the video tag.
+                     </video>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* Reflection Section */}
             <section className="py-16 md:py-24">
               <div className="container mx-auto px-4 text-center">
                 <h2 className="font-headline text-4xl md:text-5xl text-primary mb-4">Una Melodía Transformadora</h2>
@@ -220,7 +251,6 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
             
-            {/* Conclusion Section */}
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto px-4 text-center max-w-4xl">
                 <h2 className="font-headline text-4xl md:text-5xl text-primary mb-8">Un Legado para el Futuro</h2>
@@ -251,7 +281,6 @@ export default function AndeanEchoesPage() {
             </section>
 
 
-            {/* Footer */}
             <footer className="py-12 bg-gray-800 text-gray-300 font-body">
               <div className="container mx-auto text-center px-4">
                 <p className="font-headline text-2xl text-white mb-2">Un legado que me llevo.</p>
