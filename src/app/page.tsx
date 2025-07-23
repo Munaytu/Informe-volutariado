@@ -63,9 +63,13 @@ export default function AndeanEchoesPage() {
           </section>
           <MusicPlayer />
 
-          <div className="relative bg-background">
+          <div className="relative bg-transparent">
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+              <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20"></div>
+            </div>
             <motion.section
-              className="container mx-auto max-w-4xl py-16 md:py-24 px-4 text-lg leading-relaxed space-y-8"
+              className="container mx-auto max-w-4xl py-16 md:py-24 px-4 text-lg leading-relaxed space-y-8 glassmorphism relative z-10"
               {...fadeIn}
             >
               <h2 className="font-headline text-4xl md:text-5xl text-center text-primary mb-8">
@@ -75,8 +79,8 @@ export default function AndeanEchoesPage() {
               <p>Buscaba un mundo diferente, y Bolivia me lo entregó con creces.</p>
             </motion.section>
             
-            <section className="py-16 md:py-24 bg-secondary">
-              <div className="container mx-auto max-w-5xl px-4">
+            <section className="py-16 md:py-24">
+              <div className="container mx-auto max-w-5xl px-4 glassmorphism">
                 <div className="text-center mb-12">
                   <h2 className="font-headline text-4xl md:text-5xl text-primary">La Paz me recibió con un abrazo fuerte pero hermoso.</h2>
                 </div>
@@ -113,7 +117,7 @@ export default function AndeanEchoesPage() {
                     <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
                     <h2 className="font-headline text-4xl md:text-5xl text-accent">En el Centro Gregoria Apaza me sentí en casa desde el primer momento.</h2>
                   </motion.div>
-                  <motion.div {...fadeIn} className="mt-8 text-lg leading-relaxed space-y-6 bg-background/80 backdrop-blur-sm p-8 rounded-lg shadow-lg text-left">
+                  <motion.div {...fadeIn} className="mt-8 text-lg leading-relaxed space-y-6 glassmorphism p-8 rounded-lg shadow-lg text-left">
                       <p>Fui recibido con los brazos abiertos por un equipo cálido y acogedor. Aunque el cansancio del viaje y la altura me pesaron un poco al principio, pronto me sumergí por completo en el ritmo de Gregoria.</p>
                       <p>Un día cualquiera en el centro es un torbellino de vida. Mujeres llegan buscando apoyo, se realizan talleres, y jóvenes curiosos aprenden sobre sus derechos. La energía es constante.</p>
                       <p>Mi equipo de comunicación siempre estaba atento a las múltiples actividades, planeando redes sociales y creando publicaciones. El almuerzo era un momento para reír, hablar de la vida, de los problemas de Bolivia y de las fiestas que siempre estaban por venir. Por la tarde, la actividad continuaba: fotos en algún taller, revisión de textos, reuniones para eventos futuros. Un día lleno de tareas y de valiosas conversaciones.</p>
@@ -122,8 +126,8 @@ export default function AndeanEchoesPage() {
               </motion.div>
             </motion.section>
             
-            <section className="py-16 md:py-24 bg-secondary">
-              <div className="container mx-auto max-w-5xl px-4">
+            <section className="py-16 md:py-24">
+              <div className="container mx-auto max-w-5xl px-4 glassmorphism">
                 <motion.div {...fadeIn} className="text-center mb-12">
                   <h3 className="font-headline text-3xl md:text-4xl text-primary">Explorando y Entendiendo</h3>
                 </motion.div>
@@ -147,7 +151,7 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
 
-            <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 bg-secondary rounded-xl">
+            <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 glassmorphism rounded-xl">
               <motion.div {...fadeIn} className="text-center mb-12">
                 <h3 className="font-headline text-3xl md:text-4xl text-primary">El Lago Sagrado de los Andes</h3>
               </motion.div>
@@ -188,7 +192,7 @@ export default function AndeanEchoesPage() {
             </section>
             
             <section className="py-16 md:py-24">
-              <div className="container mx-auto max-w-4xl px-4 text-lg">
+              <div className="container mx-auto max-w-4xl px-4 text-lg glassmorphism">
                   <motion.div {...fadeIn} className="text-center mb-12">
                       <h2 className="font-headline text-4xl md:text-5xl text-accent">Aprendizaje y Adaptación</h2>
                       <p className="mt-2 text-muted-foreground">El camino del voluntariado en Bolivia, aunque lleno de maravillas, también tuvo sus pruebas.</p>
@@ -208,8 +212,8 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
 
-            <section className="py-16 md:py-24 bg-secondary">
-              <div className="container mx-auto px-4">
+            <section className="py-16 md:py-24">
+              <div className="container mx-auto px-4 glassmorphism">
                 <motion.div {...fadeIn} className="text-center mb-12">
                   <h2 className="font-headline text-4xl md:text-5xl text-accent">Mi creatividad también floreció aquí.</h2>
                 </motion.div>
@@ -240,7 +244,7 @@ export default function AndeanEchoesPage() {
             </section>
 
             <section className="py-16 md:py-24">
-              <div className="container mx-auto px-4 text-center">
+              <div className="container mx-auto px-4 text-center glassmorphism">
                 <motion.div {...fadeIn}>
                   <h2 className="font-headline text-4xl md:text-5xl text-primary mb-4">Una Melodía Transformadora</h2>
                   <p className="mt-2 text-muted-foreground text-lg max-w-3xl mx-auto mb-12">Mi tiempo en Bolivia ha sido como una melodía transformadora. Lo que más resuena en mí es la capacidad de adaptación y la habilidad de encontrar belleza y bondad en cualquier lugar. Es una lección de vida que no tiene precio.</p>
@@ -262,8 +266,8 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
             
-            <section className="py-16 md:py-24 bg-secondary">
-              <div className="container mx-auto px-4 text-center max-w-4xl">
+            <section className="py-16 md:py-24">
+              <div className="container mx-auto px-4 text-center max-w-4xl glassmorphism">
                 <motion.div {...fadeIn}>
                   <h2 className="font-headline text-4xl md:text-5xl text-primary mb-8">Un Legado para el Futuro</h2>
                   <p className="text-lg leading-relaxed mb-6">Esta experiencia en el Centro Gregoria Apaza ha sido un inmenso descubrimiento cultural y social. Me ha dado una nueva perspectiva sobre cómo las sociedades avanzan, cómo la gente se organiza en comunidades —como los antiguos ayllus— y cómo la vida se manifiesta de muchas formas.</p>
