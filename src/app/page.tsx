@@ -35,11 +35,10 @@ export default function AndeanEchoesPage() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center text-center text-white bg-black">
         <Image
-          src="https://placehold.co/1920x1080.png"
-          data-ai-hint="bolivia mountain landscape"
+          src="/images/foto general de la paz desde el alto.jpg"
           layout="fill"
           objectFit="cover"
-          alt="El Illimani sobre La Paz"
+          alt="Vista general de La Paz desde El Alto"
           className="opacity-50"
           priority
         />
@@ -70,7 +69,7 @@ export default function AndeanEchoesPage() {
               <p>El Illimani, ese nevado gigante, observa la ciudad como un guardián antiguo. Los valles del Altiplano se extienden bajo un cielo tan azul que parece pintado. Fue una sorpresa para mis ojos, sí, pero también un recordatorio constante de la altura: cada paso por esas empinadas calles era un desafío para los pulmones, un esfuerzo que te dejaba sin aire, pero te hacía sentir intensamente viva.</p>
               <p>La ciudad misma es un baile constante, un río de gente y sonidos. “La Paz en movimiento”, dicen, y así es. El tráfico, esa marea de coches y minibuses, al principio me llenaba de frustración, pero pronto aprendí a verlo como parte del espectáculo, una pausa para observar la vida desde la ventana.</p>
             </div>
-            <Image src="https://placehold.co/600x400.png" data-ai-hint="la paz street" width={600} height={400} alt="Una calle vibrante y empinada de La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"/>
+            <Image src="/images/teleferico.jpg" width={600} height={400} alt="Teleférico en La Paz" className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"/>
           </div>
           <div className="space-y-4 mt-8 text-lg">
              <p>Las cholitas, con sus polleras de colores y sus sombreros, caminan con una fuerza y dignidad únicas. Me aventuré a ver a los brujos en El Alto, un lugar misterioso lleno de ofrendas y secretos. Y el teleférico, una red de hilos de plata, te eleva sobre todo, regalándote una vista mágica de la ciudad y un respiro del bullicio de abajo.</p>
@@ -82,7 +81,7 @@ export default function AndeanEchoesPage() {
       {/* Gregoria Apaza Section */}
       <section className="relative py-20 md:py-32">
         <div className="absolute inset-0">
-          <Image src="https://placehold.co/1920x1080.png" data-ai-hint="community women" layout="fill" objectFit="cover" alt="Reunión comunitaria" className="opacity-10"/>
+          <Image src="/images/trabajadores de gregoria .jpg" layout="fill" objectFit="cover" alt="Trabajadoras del Centro Gregoria Apaza" className="opacity-10"/>
         </div>
         <div className="container mx-auto max-w-4xl px-4 relative z-10 text-center">
             <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
@@ -105,7 +104,7 @@ export default function AndeanEchoesPage() {
                 <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
                 <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Empecé a entender por qué culturas antiguas como la de Tiwanaku, con sus templos milenarios, eligieron estas tierras cercanas al cielo para sus rituales sagrados.</p>
             </div>
-            <Image src="https://placehold.co/600x450.png" data-ai-hint="tiwanaku ruins" width={600} height={450} alt="Cielo estrellado sobre ruinas andinas" className="rounded-lg shadow-xl"/>
+            <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl"/>
           </div>
         </div>
       </section>
@@ -128,7 +127,7 @@ export default function AndeanEchoesPage() {
                 <p>Sus historias de vida, sus luchas y su fuerza me enseñaron lecciones profundas sobre la resiliencia humana. Lo que más me impactó fue descubrir que muchas mujeres, a pesar de lo que han vivido, no conocen sus propios derechos. Pero la labor incansable del CPMGA, a través de sus proyectos y promotoras comunitarias que llegan a los rincones más lejanos, está cambiando esto.</p>
                 <p className="text-accent italic">Ellas están sembrando conciencia, mostrando que no tienen por qué permitir la violencia. Mi trabajo de documentación, al dar voz a estas experiencias, ayuda a visibilizar sus luchas y a fortalecer su camino hacia la libertad.</p>
              </div>
-             <Image src="https://placehold.co/600x450.png" data-ai-hint="lake titicaca" width={600} height={450} alt="Vista serena del Lago Titicaca" className="rounded-lg shadow-xl"/>
+             <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl"/>
          </div>
       </section>
       
@@ -185,8 +184,8 @@ export default function AndeanEchoesPage() {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-                <Image src="https://placehold.co/300x200.png" data-ai-hint="sikuri performance" width={300} height={200} alt="Tocando sikuris con un grupo" className="rounded-lg shadow-lg"/>
-                <Image src="https://placehold.co/300x200.png" data-ai-hint="singing concert" width={300} height={200} alt="Cantando en un centro cultural" className="rounded-lg shadow-lg"/>
+                <Image src="/images/yo tocando sikuri.jpg" width={300} height={200} alt="Tocando sikuris" className="rounded-lg shadow-lg"/>
+                <Image src="/images/presentacion musical en la paz de mi.jpg" width={300} height={200} alt="Cantando en La Paz" className="rounded-lg shadow-lg"/>
             </div>
           </div>
         </div>
