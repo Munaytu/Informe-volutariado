@@ -312,6 +312,10 @@ export default function AndeanEchoesPage() {
               <div className="container mx-auto text-center px-4">
                 <p className="font-headline text-2xl text-white mb-2">Un legado que me llevo.</p>
                 <p>Este voluntariado ha sido un recordatorio de que la resiliencia y la apertura a la vida son claves para crecer. Bolivia, con su belleza cultural y geográfica, y el CPMGA, con su incansable trabajo, me han regalado una experiencia invaluable. Listo para la próxima aventura, con los ojos abiertos y el corazón dispuesto a seguir aprendiendo de la vida.</p>
+                <p>Ya no pienso, luego existo.
+Ahora siento, y por eso soy.
+Porque la razón que nos impusieron olvidó el alma.
+Hoy despierto desde el corazón.</p>
                 <div className="mt-6">
                     <p>&copy; {new Date().getFullYear()} Ecos Andinos. Una historia de transformación.</p>
                 </div>
