@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import Image from 'next/image';
 import { MusicPlayer } from '@/components/MusicPlayer';
@@ -22,6 +22,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 export default function AndeanEchoesPage() {
   const lenisRef = useRef();
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -95,11 +96,19 @@ export default function AndeanEchoesPage() {
               </div>
             </section>
 
-            <section className="relative py-20 md:py-32">
+            <motion.section 
+              className="relative py-20 md:py-32 group"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <div className="absolute inset-0">
-                <Image src="/images/trabajadores de gregoria .jpg" fill sizes="100vw" alt="Trabajadoras del Centro Gregoria Apaza" className="object-cover opacity-10"/>
+                <Image src="/images/trabajadores de gregoria .jpg" fill sizes="100vw" alt="Trabajadoras del Centro Gregoria Apaza" className="object-cover transition-opacity duration-500 ease-in-out" style={{ opacity: isHovered ? 0.1 : 1 }}/>
               </div>
-              <div className="container mx-auto max-w-4xl px-4 relative z-10 text-center">
+              <motion.div 
+                className="container mx-auto max-w-4xl px-4 relative z-10 text-center transition-opacity duration-500 ease-in-out"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isHovered ? 1 : 0 }}
+              >
                   <motion.div {...fadeIn}>
                     <HeartHandshake className="mx-auto h-12 w-12 text-accent mb-4"/>
                     <h2 className="font-headline text-4xl md:text-5xl text-accent">En el Centro Gregoria Apaza me sentí en casa desde el primer momento.</h2>
@@ -110,8 +119,8 @@ export default function AndeanEchoesPage() {
                       <p>Mi equipo de comunicación siempre estaba atento a las múltiples actividades, planeando redes sociales y creando publicaciones. El almuerzo era un momento para reír, hablar de la vida, de los problemas de Bolivia y de las fiestas que siempre estaban por venir. Por la tarde, la actividad continuaba: fotos en algún taller, revisión de textos, reuniones para eventos futuros. Un día lleno de tareas y de valiosas conversaciones.</p>
                       <p className="font-bold">La semana más significativa fue cuando ayudamos a organizar un gran foro en La Paz. Ver reunidas a tantas organizaciones y presenciar la experiencia del equipo del CPMGA para mover un evento de esa magnitud fue una lección poderosa sobre trabajo en equipo. Allí sentí la verdadera fuerza de la institución.</p>
                   </motion.div>
-              </div>
-            </section>
+              </motion.div>
+            </motion.section>
             
             <section className="py-16 md:py-24 bg-secondary">
               <div className="container mx-auto max-w-5xl px-4">
@@ -119,7 +128,7 @@ export default function AndeanEchoesPage() {
                   <div className="space-y-4 text-lg">
                       <h3 className="font-headline text-3xl md:text-4xl text-primary">Explorando y Entendiendo</h3>
                       <p>Un mes después de mi llegada, mi curiosidad me llevó a explorar los alrededores. Visité mercados y plazas, disfrutando de caminar por esta ciudad en las alturas. Subir y bajar cerros era un desafío gratificante. Incluso el tráfico, que al principio me estresaba, se volvió una parte peculiar del viaje: una pausa desde la ventana del minibús.</p>
-                      <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Empecé a entender por qué culturas antiguas como la de Tiwanaku, con sus templos milenarios, eligieron estas tierras cercanas al cielo para sus rituales sagrados.</p>
+                      <p>Las noches despejadas me regalaban una vista impresionante del cielo estrellado, a veces incluso la Vía Láctea. Al convivir con la gente de estas tierras, comencé a sentir no solo su hospitalidad, sino también la profundidad de una cultura viva, tejida con los hilos del tiempo y el cielo. Conocí a un astrólogo local que me enseñó a leer las estrellas como lo hacían los sabios tiwanakotas, comprendiendo el cielo no solo como un mapa, sino como una guía espiritual y temporal. A su lado, empecé a entender por qué culturas ancestrales como la de Tiwanaku eligieron estos lugares elevados, tan cerca de los astros, para levantar sus templos y realizar sus rituales sagrados: no era casualidad, era armonía. Todo tenía su momento, su ritmo, su propósito. Y al ver el mundo desde esa perspectiva, también comencé a reflexionar sobre mis propios tiempos, mis raíces y mi forma de habitar el presente.</p>
                   </div>
                   <Image src="/images/restos arqueoligico unico.jpg" width={600} height={450} alt="Restos arqueológicos" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
                 </motion.div>
@@ -133,10 +142,29 @@ export default function AndeanEchoesPage() {
             <section className="container mx-auto max-w-5xl py-16 md:py-24 px-4 bg-secondary rounded-xl">
               <motion.div {...fadeIn} className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-4 text-lg">
-                      <h3 className="font-headline text-3xl md:text-4xl text-primary">Susurros del Titicaca y Voces de Resiliencia</h3>
-                      <p>El lago es tan grande que parece un mar, pero con la calma de la montaña. Fue allí, junto al lago, donde compartí un almuerzo sencillo con un grupo de mujeres.</p>
-                      <p>Sus historias de vida, sus luchas y su fuerza me enseñaron lecciones profundas sobre la resiliencia humana. Lo que más me impactó fue descubrir que muchas mujeres, a pesar de lo que han vivido, no conocen sus propios derechos. Pero la labor incansable del CPMGA, a través de sus proyectos y promotoras comunitarias que llegan a los rincones más lejanos, está cambiando esto.</p>
-                      <p className="text-accent italic">Ellas están sembrando conciencia, mostrando que no tienen por qué permitir la violencia. Mi trabajo de documentación, al dar voz a estas experiencias, ayuda a visibilizar sus luchas y a fortalecer su camino hacia la libertad.</p>
+                      <h3 className="font-headline text-3xl md:text-4xl text-primary">El Lago Sagrado de los Andes</h3>
+                      <p>El Lago Titicaca no es solo un cuerpo de agua: es un espejo del cielo, un corazón azul que late entre las montañas sagradas de los Andes. Su inmensidad impone, pero no intimida; abraza. Se dice que es el lago navegable más alto del mundo, y al estar allí, uno no duda de que también sea uno de los más milagrosos. Su luz cambia con el viento, sus aguas guardan los mitos de origen de los pueblos andinos, y su energía se percibe como una presencia viva, sabia, antigua.</p>
+                      <p>Las comunidades que habitan sus orillas —aymaras, quechuas, urus— no solo lo respetan: lo veneran. Lo llaman “el lago madre”, pues de él emergieron, según los mitos, los fundadores del Imperio Inca. En sus islas, como la Isla del Sol y la Isla de la Luna, aún pueden verse los restos de templos milenarios dedicados al culto solar y lunar. Allí, el tiempo parece suspenderse, y el silencio tiene un sonido propio.</p>
+                      <div className="py-4">
+                        <hr className="border-accent" />
+                      </div>
+                      <h4 className="font-headline text-2xl text-accent text-center">El Lago Sagrado</h4>
+                      <blockquote className="text-center italic text-gray-400">
+                        <p>Bajo el cielo que respira,<br/>me abraza la inmensidad del cosmos.</p>
+                        <p className="mt-4">El lago me mira con ojos de Wiracocha.<br/>Sus aguas ancestrales, espejos del cielo,<br/>me recuerdan secretos, me recuerdan mi propósito.</p>
+                        <p className="mt-4">Aquí, la memoria antigua aparece otra vez.<br/>Tiwanaku e Inkas en mi ser se funden.<br/>Kay Pacha y Hanan Pacha en mí se confunden.</p>
+                        <p className="mt-4">El Puma, guardián, mi espíritu guía.<br/>Aquí solo existe el eterno presente,<br/>lleno de un amor sin medida.</p>
+                        <p className="mt-4">No hay ayer. No hay mañana.</p>
+                        <p className="mt-4">Soy el lago.<br/>Soy el puma.<br/>Soy las estrellas.<br/>Soy todo. O el todo soy yo.<br/>Soy la nada. Y la nada soy yo.</p>
+                        <p className="mt-4">Siento la revelación otra vez.<br/>Y el viento dice:<br/>“Despierta. Ya era hora.”</p>
+                      </blockquote>
+                      <div className="py-4">
+                        <hr className="border-accent" />
+                      </div>
+                      <p>Fue en sus orillas, bajo ese cielo claro y profundo, donde compartí un almuerzo sencillo con un grupo de mujeres que, como el lago, han aprendido a resistir el paso del tiempo y las tormentas. En sus palabras encontré historias de lucha, silencios impuestos y una fuerza inquebrantable que me conmovió.</p>
+                      <p>Me impactó especialmente saber que muchas de ellas, pese a todo lo vivido, aún no conocen plenamente sus derechos. Pero la esperanza viaja a pie, y lo hace gracias a la labor del CPMGA y sus promotoras comunitarias: mujeres que llegan a los rincones más alejados, llevando conocimiento, acompañamiento y conciencia.</p>
+                      <p>Están sembrando luz, enseñando que no tienen que soportar la violencia, que tienen derecho a vivir con dignidad y libertad. Mi trabajo de documentación busca precisamente eso: amplificar sus voces, mostrar su realidad y fortalecer sus caminos.</p>
+                      <p>En el Titicaca, donde la tierra se une con el cielo, comprendí que la resiliencia es más que resistencia: es memoria, es despertar, es transformación.</p>
                   </div>
                   <Image src="/images/foto de mi en el lago.jpg" width={600} height={450} alt="Foto mia en el lago Titicaca" className="rounded-lg shadow-xl" style={{objectFit: "cover"}}/>
               </motion.div>
